@@ -19,6 +19,8 @@ class CountVectorizer:
                     self._vocabulary[token] = i
                     i += 1
 
+        return self
+
     def transform(self, corpus):
         """Calculate the document-term matrix"""
         count_matrix = []
@@ -31,8 +33,7 @@ class CountVectorizer:
         return count_matrix
 
     def fit_transform(self, corpus):
-        self.fit(corpus)
-        return self.transform(corpus)
+        return self.fit(corpus).transform(corpus)
 
     def get_feature_names(self):
         return list(self._vocabulary.keys())
