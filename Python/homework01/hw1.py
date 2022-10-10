@@ -1,15 +1,15 @@
 class CountVectorizer:
-    def __init__(self, lowercase=True):
+    def __init__(self, lowercase: bool = True):
         self.lowercase = lowercase
         self._vocabulary = {}
 
-    def get_tokens(self, document):
+    def get_tokens(self, document: str) -> list:
         if self.lowercase:
             document = document.lower()
         tokens = document.split()
         return tokens
 
-    def fit(self, corpus):
+    def fit(self, corpus: list):
         """Learn the vocabulary"""
         i = 0
         for document in corpus:
@@ -21,7 +21,7 @@ class CountVectorizer:
 
         return self
 
-    def transform(self, corpus):
+    def transform(self, corpus: list) -> list:
         """Calculate the document-term matrix"""
         count_matrix = []
         for document in corpus:
@@ -32,10 +32,10 @@ class CountVectorizer:
             count_matrix.append(row)
         return count_matrix
 
-    def fit_transform(self, corpus):
+    def fit_transform(self, corpus: list) -> list:
         return self.fit(corpus).transform(corpus)
 
-    def get_feature_names(self):
+    def get_feature_names(self) -> list:
         return list(self._vocabulary.keys())
 
 
