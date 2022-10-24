@@ -3,7 +3,7 @@ import json
 
 
 class JsonTransformer:
-    def  __init__(self, mapping):
+    def __init__(self, mapping):
         for key, item in mapping.items():
             new_key = key
             if iskeyword(key):
